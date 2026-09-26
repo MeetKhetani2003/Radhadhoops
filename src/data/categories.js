@@ -14,6 +14,14 @@ export const categories = [
     slug: "dhoop",
     short: "Premium dhoop and cups crafted for calm, contemplative puja moments.",
     image: "/products/sabrani-dhoops.jpeg",
+  },
+  {
+    id: "machines",
+    label: "MACHINES",
+    name: "Dairy & Farming Machines",
+    slug: "machines",
+    short: "High-quality machines and tools for modern dairy and farming needs.",
+    image: "/products/cow-weight-tape.jpeg",
   }
 ];
 
@@ -21,13 +29,15 @@ export const categories = [
 export const filters = [
   { id: "all", label: "All" },
   { id: "diyas", label: "Diyas" },
-  { id: "dhoop", label: "Dhoop" }
+  { id: "dhoop", label: "Dhoop" },
+  { id: "machines", label: "Machines" }
 ];
 
 export const categoryName = (id) => {
   const map = {
     diyas: "Sabrani Diyas",
     dhoop: "Sabrani Dhoop",
+    machines: "Dairy & Farming Machines",
   };
   return map[id] || "Puja Product";
 };

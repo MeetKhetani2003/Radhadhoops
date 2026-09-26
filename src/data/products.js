@@ -124,6 +124,49 @@ export const products = [
       { q: "Are they easy to light?", a: "Yes, they are designed to light easily and burn evenly." },
       { q: "Can they be used indoors?", a: "Yes, but ensure the room is well-ventilated as they produce thick, fragrant smoke." }
     ]
+  },
+  {
+    id: "cow-weight-measuring-tape",
+    slug: "cow-weight-measuring-tape",
+    name: "Cow Weight Measuring Tape",
+    category: "machines",
+    categoryLabel: "Machines",
+    featured: true,
+    shortDescription:
+      "Accurate and easy-to-use measuring tape to estimate the weight of cattle instantly.",
+    description:
+      "Our Cow Weight Measuring Tape is an essential tool for modern dairy farmers. It allows you to quickly and accurately estimate the weight of your cattle without the need for a bulky weighing scale. Simply measure the heart girth and read the corresponding weight on the tape.",
+    images: ["/products/cow-weight-tape.jpeg"],
+    highlights: [
+      "Accurate weight estimation",
+      "Durable, tear-resistant material",
+      "Easy to read markings",
+      "Portable and lightweight"
+    ],
+    material: "High-quality PVC fiberglass",
+    dimensions: "Length: 2.5 meters (approx)",
+    weight: "Lightweight",
+    packSize: "1 Piece",
+    quantity: "Standard",
+    usage: ["Dairy Farms", "Cattle Health Monitoring", "Veterinary Use"],
+    howToUse: [
+      "Keep the cow calm and standing straight.",
+      "Wrap the tape around the cow's heart girth, just behind the front legs.",
+      "Pull the tape snug but not too tight.",
+      "Read the estimated weight directly from the tape."
+    ],
+    suitableFor: "Cows and other cattle.",
+    storage: "Wipe clean after use and store in a dry place.",
+    safety: "Handle cattle gently during measurement.",
+    benefits: [
+      "Helps monitor cattle health and growth",
+      "Aids in calculating feed requirements",
+      "Useful for determining medication dosages"
+    ],
+    faqs: [
+      { q: "Is it accurate?", a: "It provides a highly reliable estimate for most cattle breeds based on girth." },
+      { q: "Can it measure other animals?", a: "It is specifically calibrated for the proportions of cattle." }
+    ]
   }
 ];
 
@@ -132,7 +175,7 @@ export const getProduct = (slug) => products.find((p) => p.slug === slug);
 export const featuredProducts = () => products.filter((p) => p.featured);
 
 export const relatedProducts = (product, count = 3) => {
-  const order = ["diyas", "dhoop", "agarbatti", "samidha", "logs", "other"];
+  const order = ["diyas", "dhoop", "machines", "agarbatti", "samidha", "logs", "other"];
   const idx = order.indexOf(product.category);
   const preferred = order[(idx + 1) % order.length];
   const others = products.filter((p) => p.slug !== product.slug);
