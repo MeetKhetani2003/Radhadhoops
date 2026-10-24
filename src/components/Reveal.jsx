@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 export default function Reveal({
-  children,
+  children = null,
   delay = 0,
   y = 28,
   className = "",

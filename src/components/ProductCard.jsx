@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function ProductCard({ product, index = 0 }) {
@@ -11,7 +13,7 @@ export default function ProductCard({ product, index = 0 }) {
       transition={{ duration: 0.5, delay: (index % 4) * 0.06 }}
     >
       <Link
-        to={`/products/${product.slug}`}
+        href={`/products/${product.slug}`}
         className="group flex h-full flex-col"
       >
         <div className="relative aspect-[4/5] overflow-hidden rounded-[4px] bg-warm">

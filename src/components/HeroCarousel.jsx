@@ -1,6 +1,8 @@
+"use client";
+
 import { useEffect, useRef, useState, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const slides = [
   {
@@ -138,7 +140,7 @@ export default function HeroCarousel() {
                   {slide.ctas.map((c) => (
                     <Link
                       key={c.label}
-                      to={c.to}
+                      href={c.to || c.href}
                       className={`group inline-flex items-center gap-3 rounded-full px-8 py-4 text-[0.85rem] font-medium uppercase tracking-[0.18em] transition-all duration-500 ${
                         c.variant === "light"
                           ? "bg-cream text-violet-deep shadow-[0_0_20px_rgba(255,253,247,0.15)] hover:bg-pitambari hover:shadow-[0_0_30px_rgba(230,181,46,0.3)] hover:-translate-y-0.5"

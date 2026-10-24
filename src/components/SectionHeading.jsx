@@ -1,12 +1,12 @@
 import Reveal from "./Reveal";
 
 export default function SectionHeading({
-  eyebrow,
+  eyebrow = "",
   title,
-  subtitle,
+  subtitle = "",
   align = "left",
   light = false,
-  number,
+  number = null,
 }) {
   const alignCls = align === "center" ? "items-center text-center" : "items-start text-left";
   return (

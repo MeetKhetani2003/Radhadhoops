@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 // A premium button with an animated arrow.
-// variant: "solid" | "outline" | "ghost" | "light"
+// variant: "solid" | "outline" | "ghost" | "light" | "lightOutline"
 export default function ArrowButton({
-  to,
-  href,
-  onClick,
-  children,
+  to = null,
+  href = null,
+  onClick = null,
+  children = null,
   variant = "solid",
   className = "",
-  type,
+  type = null,
 }) {
   const base =
     "group inline-flex items-center gap-3 rounded-full px-7 py-3.5 text-[0.8rem] font-medium uppercase tracking-[0.14em] transition-all duration-300";
@@ -53,14 +53,32 @@ export default function ArrowButton({
       </span>
     </>
   );
-  const cls = `${base} ${variants[variant]} ${className}`;
-  if (to) return <Link to={to} onClick={onClick} className={cls}>{inner}</Link>;
-  if (href)
+  const cls = `${base} ${variants[variant] || variants.solid} ${className}`;
+  const target = href || to;
+
+  if (target) {
+    const isExternal =
+      target.startsWith("http://") ||
+      target.startsWith("https://") ||
+      target.startsWith("mailto:") ||
+      target.startsWith("tel:") ||
+      target.startsWith("//");
+
+    if (isExternal) {
+      return (
+        <a href={target} target="_blank" rel="noreferrer" className={cls}>
+          {inner}
+        </a>
+      );
+    }
+
     return (
-      <a href={href} target="_blank" rel="noreferrer" className={cls}>
+      <Link href={target} onClick={onClick} className={cls}>
         {inner}
-      </a>
+      </Link>
     );
+  }
+
   return (
     <button type={type || "button"} onClick={onClick} className={cls}>
       {inner}

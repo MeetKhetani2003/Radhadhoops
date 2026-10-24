@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/page": "/",
+  "/faq/page": "/faq",
+  "/contact/page": "/contact",
+  "/gallery/page": "/gallery",
+  "/machines/[slug]/page": "/machines/[slug]",
+  "/about/page": "/about",
+  "/sustainability/page": "/sustainability",
+  "/products/page": "/products",
+  "/machines/page": "/machines",
+  "/products/[slug]/page": "/products/[slug]"
+}

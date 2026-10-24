@@ -1,7 +1,9 @@
+"use client";
+
 import { useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function Lightbox({ images, index, setIndex, onClose }) {
+export default function Lightbox({ images = [], index = null, setIndex = () => {}, onClose = () => {} }) {
   const open = index !== null && index >= 0;
 
   const next = useCallback(
@@ -46,7 +48,7 @@ export default function Lightbox({ images, index, setIndex, onClose }) {
         >
           <button
             onClick={onClose}
-            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:bg-cream/10"
+            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:bg-cream/10 cursor-pointer"
             aria-label="Close"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -54,7 +56,7 @@ export default function Lightbox({ images, index, setIndex, onClose }) {
             </svg>
           </button>
 
-          <button onClick={prev} className="absolute left-4 flex h-12 w-12 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:bg-cream/10 sm:left-8" aria-label="Previous">
+          <button onClick={prev} className="absolute left-4 flex h-12 w-12 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:bg-cream/10 sm:left-8 cursor-pointer" aria-label="Previous">
             <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </button>
 
@@ -69,7 +71,7 @@ export default function Lightbox({ images, index, setIndex, onClose }) {
             className="max-h-[82vh] max-w-[90vw] rounded object-contain shadow-2xl"
           />
 
-          <button onClick={next} className="absolute right-4 flex h-12 w-12 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:bg-cream/10 sm:right-8" aria-label="Next">
+          <button onClick={next} className="absolute right-4 flex h-12 w-12 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:bg-cream/10 sm:right-8 cursor-pointer" aria-label="Next">
             <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </button>
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { site, whatsappHref } from "../config/site";
 import Logo from "./Logo";
 
@@ -44,7 +44,7 @@ export default function Footer() {
                 {c.links.map((l) => (
                   <li key={l.to}>
                     <Link
-                      to={l.to}
+                      href={l.to}
                       className="text-sm text-cream/70 transition-colors hover:text-cream"
                     >
                       {l.label}
@@ -66,7 +66,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link to="/contact" className="transition-colors hover:text-cream">
+                <Link href="/contact" className="transition-colors hover:text-cream">
                   Contact
                 </Link>
               </li>

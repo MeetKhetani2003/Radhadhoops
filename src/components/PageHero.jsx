@@ -1,6 +1,12 @@
 import Breadcrumbs from "./Breadcrumbs";
 
-export default function PageHero({ eyebrow, title, subtitle, crumbs, image }) {
+export default function PageHero({
+  eyebrow = "",
+  title,
+  subtitle = "",
+  crumbs = [],
+  image = "",
+}) {
   return (
     <section className="relative overflow-hidden bg-violet-brand pb-16 pt-32 text-cream sm:pt-40">
       {image && (
@@ -12,7 +18,7 @@ export default function PageHero({ eyebrow, title, subtitle, crumbs, image }) {
       <div className="pointer-events-none absolute inset-0 grain opacity-[0.06]" />
       <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-pitambari/10 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        {crumbs && <Breadcrumbs light items={crumbs} />}
+        {crumbs && crumbs.length > 0 && <Breadcrumbs light items={crumbs} />}
         {eyebrow && (
           <span className="mt-6 flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-pitambari">
             <span className="h-px w-8 bg-pitambari" />

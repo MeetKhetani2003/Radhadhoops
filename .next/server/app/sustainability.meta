@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/sustainability/layout,_N_T_/sustainability/page,_N_T_/sustainability"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/90c295d415f9f0fbb9d5f1efe7c342be271e9370ed06c87119428653fbb2edcb/$/sustainability",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/sustainability/page"
+    },
+    "isFallback": false
+  }
+}

@@ -1,5 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { site } from "../config/site";
 import Logo from "./Logo";
@@ -8,6 +11,7 @@ import ArrowButton from "./ArrowButton";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -19,6 +23,11 @@ export default function Header() {
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
+
+  // Close mobile drawer on route change
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -33,33 +42,32 @@ export default function Header() {
           <Logo />
 
           <nav className="hidden items-center gap-8 lg:flex">
-            {site.nav.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  `group relative text-[0.82rem] font-medium tracking-wide transition-colors ${
+            {site.nav.map((item) => {
+              const isActive =
+                item.to === "/"
+                  ? pathname === "/"
+                  : pathname === item.to || pathname?.startsWith(item.to + "/");
+              return (
+                <Link
+                  key={item.to}
+                  href={item.to}
+                  className={`group relative text-[0.82rem] font-medium tracking-wide transition-colors ${
                     isActive ? "text-violet-brand" : "text-ink-soft hover:text-violet-brand"
-                  }`
-                }
-                end={item.to === "/"}
-              >
-                {({ isActive }) => (
-                  <>
-                    {item.label}
-                    <span
-                      className={`absolute -bottom-1.5 left-0 h-px bg-pitambari transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    />
-                  </>
-                )}
-              </NavLink>
-            ))}
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute -bottom-1.5 left-0 h-px bg-pitambari transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="hidden lg:block">
-            <ArrowButton to="/products" variant="solid" className="!px-6 !py-3">
+            <ArrowButton href="/products" variant="solid" className="!px-6 !py-3">
               Explore Products
             </ArrowButton>
           </div>
@@ -107,7 +115,7 @@ export default function Header() {
                   transition={{ delay: 0.12 + i * 0.07, duration: 0.5 }}
                 >
                   <Link
-                    to={item.to}
+                    href={item.to}
                     onClick={() => setOpen(false)}
                     className="flex items-baseline gap-4 border-b border-cream/10 py-4"
                   >
@@ -127,7 +135,7 @@ export default function Header() {
               transition={{ delay: 0.6 }}
             >
               <ArrowButton
-                to="/products"
+                href="/products"
                 variant="light"
                 className="w-full justify-center"
                 onClick={() => setOpen(false)}

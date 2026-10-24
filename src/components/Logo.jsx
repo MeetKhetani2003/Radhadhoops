@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { site } from "../config/site";
 
 // variant: "dark" (for light bg) | "light" (for violet bg)
@@ -6,7 +6,7 @@ export default function Logo({ variant = "dark", className = "" }) {
   const first = variant === "light" ? "text-cream" : "text-violet-brand";
   return (
     <Link
-      to="/"
+      href="/"
       className={`group inline-flex flex-col leading-none ${className}`}
       aria-label="Radha Dhoops — home"
     >
