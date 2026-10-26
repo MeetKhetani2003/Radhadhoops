@@ -3,10 +3,20 @@ import type { Metadata } from "next";
 import ProductsClient from "./ProductsClient";
 
 export const metadata: Metadata = {
-  title: "Cow Dung Puja Products",
+  title: "Buy Desi Cow Dung Puja Products Online | Radha Dhoops",
   description:
-    "Explore naturally crafted cow-dung products created for पूजा, rituals and sacred spaces — diyas, dhoop, agarbatti, samidha and more.",
+    "Shop 100% pure organic cow dung powder (Gomay Churna), Sambrani dhoop cups, herbal diyas & sacred puja essentials. Charcoal-free, natural, and directly sourced from indigenous Gaushalas.",
+  keywords: [
+    "Organic cow dung powder",
+    "Gomay churna for havan",
+    "Sambrani dhoop cups online",
+    "Desi cow dung diya",
+    "Charcoal free dhoop",
+    "Puja essentials India",
+    "Radha Dhoops"
+  ],
 };
+
 
 export default function ProductsPage() {
   return (

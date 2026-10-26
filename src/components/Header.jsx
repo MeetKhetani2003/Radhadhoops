@@ -31,13 +31,35 @@ export default function Header() {
 
   return (
     <>
+      {/* Top Announcement Bar for High Conversion */}
+      <div className="fixed top-0 inset-x-0 z-50 flex items-center justify-center gap-2 border-b border-white/10 bg-violet-deep px-4 py-1.5 text-center text-[0.7rem] font-medium tracking-wide text-cream sm:gap-3 sm:text-[0.74rem]">
+        <span className="flex items-center gap-1.5 text-pitambari font-semibold">
+          <span className="h-1.5 w-1.5 rounded-full bg-pitambari animate-pulse" />
+          Pure Desi Cow Products
+        </span>
+        <span className="hidden sm:inline text-cream/30">•</span>
+        <span className="hidden sm:inline text-cream/85">100% Charcoal-Free & Vedic Formulated</span>
+        <span className="hidden md:inline text-cream/30">•</span>
+        <span className="hidden md:inline text-cream/85">Pan-India Dispatch</span>
+        <span className="text-cream/30">•</span>
+        <a
+          href={`https://wa.me/${site.whatsappNumber}?text=Namaste!%20I%20want%20to%20order%20puja%20products.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-pitambari underline underline-offset-2 transition-colors hover:text-cream"
+        >
+          Order on WhatsApp ↗
+        </a>
+      </div>
+
       <header
-        className={`fixed left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-7xl -translate-x-1/2 flex-col justify-center transition-all duration-500 sm:w-[calc(100%-3rem)] ${
+        className={`fixed left-1/2 z-40 flex w-[calc(100%-2rem)] max-w-7xl -translate-x-1/2 flex-col justify-center transition-all duration-500 sm:w-[calc(100%-3rem)] ${
           scrolled
-            ? "top-4 rounded-full border border-violet-brand/15 bg-cream/95 py-3 shadow-xl shadow-violet-brand/5 backdrop-blur-md"
-            : "top-6 rounded-full border border-white/20 bg-cream/85 py-4 shadow-lg backdrop-blur-md"
+            ? "top-9 rounded-full border border-violet-brand/15 bg-cream/95 py-2.5 shadow-xl shadow-violet-brand/5 backdrop-blur-md"
+            : "top-11 rounded-full border border-white/20 bg-cream/85 py-3.5 shadow-lg backdrop-blur-md"
         }`}
       >
+
         <div className="flex w-full items-center justify-between px-5 sm:px-8">
           <Logo />
 

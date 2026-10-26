@@ -12,7 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://radhadhoops.com"),
+  metadataBase: new URL("https://radhadhoop.com"),
   title: {
     default: "Radha Dhoops | Natural Cow Dung Puja Products",
     template: "%s | Radha Dhoops",

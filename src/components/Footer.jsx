@@ -70,10 +70,19 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
-              <li className="text-cream/50">{site.email}</li>
-              <li className="text-cream/50">{site.phone}</li>
+              <li>
+                <a href={`mailto:${site.email}`} className="transition-colors hover:text-cream">
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${site.whatsappNumber}`} className="transition-colors hover:text-cream">
+                  {site.phone}
+                </a>
+              </li>
             </ul>
           </div>
+
         </div>
 
         <div className="my-10 h-px w-full bg-gradient-to-r from-transparent via-pitambari/60 to-transparent" />

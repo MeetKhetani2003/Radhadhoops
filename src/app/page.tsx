@@ -6,215 +6,216 @@ import ProductCard from "../components/ProductCard";
 import CTASection from "../components/CTASection";
 import ArrowButton from "../components/ArrowButton";
 import { categories } from "../data/categories";
-import { featuredProducts } from "../data/products";
-
-const pillars = [
-  { n: "01", label: "Natural", text: "Built around naturally available materials." },
-  { n: "02", label: "Traditional", text: "Inspired by timeless Indian पूजा practices." },
-  { n: "03", label: "Thoughtful", text: "Designed with care, purpose and consistency." },
-];
-
-const whyCards = [
-  { title: "Rooted in Tradition", text: "Inspired by timeless Indian पूजा practices." },
-  { title: "Naturally Focused", text: "Built around naturally available materials." },
-  { title: "Thoughtfully Crafted", text: "Designed with care and consistency." },
-  { title: "Purpose Driven", text: "Creating products with a meaningful purpose." },
-  { title: "Indian at Heart", text: "Rooted in Indian culture, modern in presentation." },
-];
+import { products } from "../data/products";
+import {
+  CategoryQuickBar,
+  TrustAssuranceStrip,
+  PurityComparison,
+  DevoteeReviews,
+  BulkOrderBanner,
+  HomeFaqSection,
+} from "../components/HomeClientSections";
 
 const stages = [
-  { n: "01", title: "Natural Resource", text: "A naturally available material, gathered responsibly." },
-  { n: "02", title: "Thoughtful Processing", text: "Prepared with care and consistency." },
-  { n: "03", title: "Purposeful Product", text: "Shaped into products for पूजा and ritual." },
-  { n: "04", title: "Sacred Use", text: "Given a meaningful place in tradition." },
+  { n: "01", title: "Pure Gau-Dhan", text: "Pure Desi cow dung ethically gathered from healthy grass-fed cows." },
+  { n: "02", title: "Natural Sun-Drying", text: "Sun-cured and aerated naturally without any toxic charcoal or chemical heat." },
+  { n: "03", title: "Herbal Formulation", text: "Blended with pure Vedic herbs, Sambrani, Guggal and sacred clays." },
+  { n: "04", title: "Sanctified Rituals", text: "Bringing purifying aroma and positive cosmic vibrations to every home." },
 ];
 
 const galleryPreview = [
-  "https://images.pexels.com/photos/34644588/pexels-photo-34644588.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=900",
-  "https://images.pexels.com/photos/11465621/pexels-photo-11465621.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=520",
-  "https://images.pexels.com/photos/38920473/pexels-photo-38920473.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=520",
-  "https://images.pexels.com/photos/12430842/pexels-photo-12430842.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=900",
+  { src: "https://images.pexels.com/photos/34644588/pexels-photo-34644588.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=900", title: "Sacred Daily Aarti" },
+  { src: "/products/cow-dung-powder.jpg", title: "Pure Gomay Churna" },
+  { src: "https://images.pexels.com/photos/38920473/pexels-photo-38920473.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=520", title: "Sambrani Cup Cleansing" },
+  { src: "https://images.pexels.com/photos/12430842/pexels-photo-12430842.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=900", title: "Sacred Diya Glow" },
 ];
 
 export default function HomePage() {
-  const feat = featuredProducts();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://radhadhoop.com/#organization",
+        name: "Radha Dhoops",
+        url: "https://radhadhoop.com",
+        logo: "https://radhadhoop.com/products/sabrani-diya.png",
+        description:
+          "Manufacturer & supplier of 100% natural Desi cow dung puja products: Gomay powder, Sambrani dhoop cups, herbal diyas, and cattle tools.",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "IN",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://radhadhoop.com/#website",
+        url: "https://radhadhoop.com",
+        name: "Radha Dhoops",
+        description: "Rooted in Tradition. Inspired by Nature. Pure Cow Dung Puja Products.",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: "https://radhadhoop.com/products?cat={search_term_string}",
+          "query-input": "required name=search_term_string",
+        },
+      },
+
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "Does Radha Dhoops Cow Dung Powder or Dhoop have any foul smell?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No, our cow dung is sourced strictly from indigenous Desi cows and undergoes a traditional sun-drying and natural aerating process with pure sambrani and herbs, resulting in an earthy sacred aroma.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can the Cow Dung Powder be used for daily Agnihotra and Yagya?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes, it is 100% unadulterated, micronized and chemical-free, prepared strictly according to Vedic standards.",
+            },
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      {/* 01 — Hero Carousel */}
       <HeroCarousel />
 
-      {/* 02 — Brand Philosophy */}
-      <section className="bg-cream py-12 sm:py-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <div className="relative">
-              <div className="overflow-hidden rounded-[6px]">
-                <img
-                  src="https://images.pexels.com/photos/3160978/pexels-photo-3160978.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1200"
-                  alt="A lit cow dung diya surrounded by flower petals"
-                  className="aspect-[4/5] w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-4 hidden rounded-[6px] border border-violet-brand/10 bg-cream p-5 shadow-xl sm:block">
-                <p className="font-serif text-4xl text-violet-brand">100%</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-ink-soft">Natural Material</p>
-              </div>
-            </div>
-          </Reveal>
+      {/* 02 — Mobile Quick-Category Pills (App-Style Bar) */}
+      <CategoryQuickBar categories={categories} />
 
-          <div>
-            <SectionHeading
-              eyebrow="The Radha Dhoops Philosophy"
-              title="Tradition Can Evolve Without Losing Its Soul."
-              subtitle="Radha Dhoops creates cow-dung-based products inspired by traditional पूजा practices — presented through a modern, thoughtful brand. We connect nature, tradition, transformation and sacred use into one meaningful journey."
-            />
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
-              {pillars.map((p, i) => (
-                <Reveal key={p.n} delay={i * 0.1}>
-                  <div className="border-t border-violet-brand/15 pt-4">
-                    <span className="font-serif text-2xl text-pitambari">{p.n}</span>
-                    <h4 className="mt-2 text-sm font-semibold uppercase tracking-wide text-violet-brand">{p.label}</h4>
-                    <p className="mt-1.5 text-sm text-ink-soft">{p.text}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 03 — Trust Assurances Bar */}
+      <TrustAssuranceStrip />
 
-      {/* 03 — Product Categories */}
-      <section className="bg-cream-2 py-12 sm:py-16">
+      {/* 04 — Bestselling Products Showcase */}
+      <section className="bg-cream py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <SectionHeading
-            eyebrow="Explore Our Collection"
-            title="Purposeful Products Inspired by India's Sacred Traditions."
-            align="center"
-          />
-          <div className="mt-14 grid gap-5 md:grid-cols-6 md:grid-rows-2">
-            {categories.map((cat, i) => {
-              const spans = [
-                "md:col-span-4 md:row-span-1",
-                "md:col-span-2 md:row-span-1",
-                "md:col-span-2 md:row-span-1",
-                "md:col-span-2 md:row-span-1",
-                "md:col-span-2 md:row-span-1",
-              ];
-              return (
-                <Reveal key={cat.id} delay={(i % 3) * 0.08} className={spans[i]}>
-                  <Link
-                    href={`/products?cat=${cat.slug}`}
-                    className="group relative flex h-64 items-end overflow-hidden rounded-[6px] md:h-full md:min-h-[260px]"
-                  >
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-violet-deep/85 via-violet-deep/25 to-transparent" />
-                    <div className="relative z-10 p-6 text-cream">
-                      <span className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-pitambari">{cat.label}</span>
-                      <h3 className="mt-1.5 font-serif text-2xl">{cat.name}</h3>
-                      <p className="mt-2 max-w-sm text-sm text-cream/75">{cat.short}</p>
-                      <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em]">
-                        Explore
-                        <svg className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                      </span>
-                    </div>
-                  </Link>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 04 — Featured Products */}
-      <section className="bg-cream py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
             <SectionHeading
-              eyebrow="Made for Sacred Moments"
-              title="A Collection Crafted With Purpose."
+              eyebrow="Sacred Bestsellers"
+              title="Handcrafted Puja Essentials for Every Home."
+              subtitle="100% pure cow-dung formulations made without toxic charcoal or chemical perfumes. Direct from gaushalas."
             />
-            <ArrowButton href="/products" variant="outline">View All</ArrowButton>
+            <ArrowButton href="/products" variant="outline">
+              View All Products
+            </ArrowButton>
           </div>
-          <div className="mt-14 grid grid-cols-2 gap-5 sm:gap-7 lg:grid-cols-4">
-            {feat.slice(0, 4).map((p, i) => (
+
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+            {products.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* 05 — Tradition → Nature Story */}
-      <section className="relative overflow-hidden bg-violet-brand py-12 text-cream sm:py-16">
-        <div className="pointer-events-none absolute inset-0 grain opacity-[0.06]" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
-          <div className="order-2 lg:order-1">
-            <SectionHeading
-              light
-              eyebrow="Purpose · Nature · Tradition"
-              title="A Story That Begins in Nature and Finds Its Home in Ritual."
-              subtitle="Every Radha Dhoops product follows a simple journey — from a naturally available resource, through thoughtful craft, into a meaningful place in India's sacred traditions."
-            />
-            <div className="mt-8">
-              <ArrowButton href="/sustainability" variant="light">Our Approach</ArrowButton>
-            </div>
-          </div>
-          <Reveal className="order-1 lg:order-2">
-            <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.pexels.com/photos/13114795/pexels-photo-13114795.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=600&h=760" alt="Cow grazing in a green field" loading="lazy" className="mt-8 aspect-[3/4] w-full rounded-[6px] object-cover" />
-              <img src="https://images.pexels.com/photos/34700588/pexels-photo-34700588.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=600&h=760" alt="Dhoop smoke rising" loading="lazy" className="aspect-[3/4] w-full rounded-[6px] object-cover" />
+      {/* 05 — Purity Comparison (Why Switch to Pure Gau May) */}
+      <PurityComparison />
+
+      {/* 06 — Rich SEO Authority Section: Vedic Significance */}
+      <section className="bg-cream-2 py-14 sm:py-20 border-y border-violet-brand/10">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <div className="relative">
+              <div className="overflow-hidden rounded-[8px] shadow-lg border border-violet-brand/10">
+                <img
+                  src="/products/cow-dung-powder.jpg"
+                  alt="Pure organic Desi cow dung powder Gomay Churna with havan herbs"
+                  className="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="absolute -bottom-5 -right-4 hidden rounded-[6px] border border-violet-brand/10 bg-cream p-4 shadow-xl sm:block">
+                <p className="font-serif text-2xl text-violet-brand">गोमये वसते लक्ष्मी</p>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-[0.16em] text-ink-soft">
+                  Padma Purana Vedic Truth
+                </p>
+              </div>
             </div>
           </Reveal>
-        </div>
-      </section>
 
-      {/* 06 — Why Radha Dhoops */}
-      <section className="bg-cream py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <SectionHeading eyebrow="Why Radha Dhoops?" title="Built on Values We Never Compromise." />
-          <div className="mt-14 grid gap-px overflow-hidden rounded-[6px] border border-violet-brand/10 bg-violet-brand/10 sm:grid-cols-2 lg:grid-cols-3">
-            {whyCards.map((c, i) => (
-              <Reveal key={c.title} delay={(i % 3) * 0.08}>
-                <div className="group h-full bg-cream p-8 transition-colors hover:bg-cream-2">
-                  <span className="font-serif text-lg text-pitambari">0{i + 1}</span>
-                  <h3 className="mt-3 font-serif text-xl text-ink">{c.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{c.text}</p>
-                </div>
-              </Reveal>
-            ))}
-            <Reveal delay={0.24}>
-              <Link href="/about" className="flex h-full flex-col justify-between bg-violet-brand p-8 text-cream transition-colors hover:bg-violet-deep">
-                <span className="font-serif text-lg text-pitambari">↗</span>
-                <div>
-                  <h3 className="font-serif text-xl">Learn Our Story</h3>
-                  <p className="mt-2 text-sm text-cream/70">Discover the beginning, belief and vision behind the brand.</p>
-                </div>
-              </Link>
-            </Reveal>
+          <div>
+            <SectionHeading
+              eyebrow="Vedic Wisdom & Science"
+              title="The Sacred Power of Desi Cow Dung in Sanatan Rituals."
+              subtitle="Ancient scriptures declare that Goddess Lakshmi resides in Gau-May (गोमय). Modern environmental science reveals that burning pure cow dung releases natural formaldehyde and ethylene oxide vapors that neutralize airborne pathogens and purify living spaces."
+            />
+
+            <div className="mt-8 space-y-4 text-sm text-ink-soft leading-relaxed">
+              <div className="flex items-start gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-pitambari/30 text-violet-brand font-bold text-xs mt-0.5">
+                  1
+                </span>
+                <p>
+                  <strong className="text-ink">Natural Bio-Air Purifier:</strong> In Vedic Agnihotra and daily Havan, burning sun-dried cow dung with pure ghee releases negative ions that cleanse smog and neutralize bacteria without irritating sensitive lungs.
+                </p>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-pitambari/30 text-violet-brand font-bold text-xs mt-0.5">
+                  2
+                </span>
+                <p>
+                  <strong className="text-ink">Charcoal-Free Health Protection:</strong> Commercial dhoops burn coal powder emitting dangerous benzene. Radha Dhoops uses only pure Gau May and dried Ayurvedic flora.
+                </p>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-pitambari/30 text-violet-brand font-bold text-xs mt-0.5">
+                  3
+                </span>
+                <p>
+                  <strong className="text-ink">Sustainable Gaushala Empowerment:</strong> Every product purchased creates a dignified, sustainable revenue model for indigenous Indian cows and local gaushala caretakers.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <ArrowButton href="/sustainability" variant="solid">
+                Discover Our Sourcing
+              </ArrowButton>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 07 — Transformation */}
-      <section className="bg-cream-2 py-12 sm:py-16">
+      {/* 07 — Devotee Reviews (Social Proof) */}
+      <DevoteeReviews />
+
+      {/* 08 — Transformation Story */}
+      <section className="bg-cream py-14 sm:py-20">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <SectionHeading eyebrow="From Nature. Into Tradition." title="Four Stages, One Meaningful Journey." align="center" />
-          <div className="relative mt-16">
-            <div className="absolute left-6 top-0 h-full w-px bg-violet-brand/15 md:left-0 md:top-8 md:h-px md:w-full" />
-            <div className="grid gap-10 md:grid-cols-4 md:gap-6">
+          <SectionHeading
+            eyebrow="From Gau-Dhan to Sacred Moments"
+            title="Four Sacred Stages, One Meaningful Journey."
+            align="center"
+          />
+          <div className="relative mt-14">
+            <div className="absolute left-6 top-0 h-full w-px bg-violet-brand/15 md:left-0 md:top-7 md:h-px md:w-full" />
+            <div className="grid gap-8 md:grid-cols-4 md:gap-6">
               {stages.map((s, i) => (
-                <Reveal key={s.n} delay={i * 0.12}>
-                  <div className="relative pl-16 md:pl-0 md:pt-16 md:text-center">
-                    <span className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-violet-brand font-serif text-cream md:left-1/2 md:-translate-x-1/2">
+                <Reveal key={s.n} delay={i * 0.1}>
+                  <div className="relative pl-14 md:pl-0 md:pt-14 md:text-center">
+                    <span className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-full bg-violet-brand font-serif text-cream md:left-1/2 md:-translate-x-1/2 shadow-md">
                       {s.n}
                     </span>
-                    <h3 className="font-serif text-xl text-ink">{s.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-soft md:mx-auto md:max-w-[16rem]">{s.text}</p>
+                    <h3 className="font-serif text-lg text-ink font-semibold">{s.title}</h3>
+                    <p className="mt-1.5 text-xs leading-relaxed text-ink-soft md:mx-auto md:max-w-[15rem]">
+                      {s.text}
+                    </p>
                   </div>
                 </Reveal>
               ))}
@@ -223,18 +224,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 08 — Gallery Preview */}
-      <section className="bg-cream py-12 sm:py-16">
+      {/* 09 — B2B & Temple Wholesale Banner */}
+      <BulkOrderBanner />
+
+      {/* 10 — FAQ Accordion (SEO & Buyer Confidence) */}
+      <HomeFaqSection />
+
+      {/* 11 — Moments & Rituals Gallery */}
+      <section className="bg-cream-2 py-14 sm:py-20 border-t border-violet-brand/10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading eyebrow="Moments & Rituals" title="A Glimpse Into Our World." />
-            <ArrowButton href="/gallery" variant="outline">View Gallery</ArrowButton>
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
+            <SectionHeading eyebrow="Moments & Rituals" title="A Glimpse Into Sacred Living." />
+            <ArrowButton href="/gallery" variant="outline">
+              View Full Gallery
+            </ArrowButton>
           </div>
-          <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {galleryPreview.map((src, i) => (
-              <Reveal key={i} delay={(i % 4) * 0.07} className={i % 3 === 0 ? "row-span-2" : ""}>
-                <div className="overflow-hidden rounded-[6px]">
-                  <img src={src} alt="Radha Dhoops ritual moment" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {galleryPreview.map((item, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className="group relative aspect-[3/4] overflow-hidden rounded-[6px] shadow-sm bg-warm">
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-violet-deep/75 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
+                    <span className="text-xs font-serif text-cream">{item.title}</span>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -242,22 +259,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 09 — Machines Collection */}
-      <section className="bg-cream-2 py-12 sm:py-16">
+      {/* 12 — Machines Collection */}
+      <section className="bg-cream py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-col items-center gap-8 rounded-[8px] border border-violet-brand/10 bg-cream p-10 text-center sm:p-14">
-            <span className="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-violet-soft">Radha Dhoops Machines</span>
-            <h3 className="max-w-2xl font-serif text-3xl leading-tight text-ink sm:text-4xl">
-              Purpose-Built Solutions for a Growing Natural-Products Ecosystem.
+          <div className="flex flex-col items-center gap-6 rounded-[8px] border border-violet-brand/12 bg-cream-2 p-8 text-center sm:p-12 shadow-sm">
+            <span className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-violet-soft">
+              Radha Dhoops Machines
+            </span>
+            <h3 className="max-w-2xl font-serif text-2xl leading-tight text-ink sm:text-3xl">
+              Equipping Gaushalas & Farmers With Precision Machinery
             </h3>
-            <p className="max-w-lg text-ink-soft">Explore our dedicated line of machines designed to support the creation of natural cow-dung products at scale.</p>
-            <ArrowButton href="/machines" variant="solid">Explore Machines</ArrowButton>
+            <p className="max-w-lg text-xs sm:text-sm text-ink-soft">
+              Explore our veterinary and farming line including accurate cow-weight measuring tapes and processing machinery designed to help gaushalas scale organically.
+            </p>
+            <ArrowButton href="/machines" variant="solid">
+              Explore Machines & Tools
+            </ArrowButton>
           </div>
         </div>
       </section>
 
-      {/* 10 — CTA */}
+      {/* 13 — CTA */}
       <CTASection />
     </div>
   );
 }
+

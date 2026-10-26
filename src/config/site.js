@@ -1,16 +1,19 @@
 export const site = {
   name: "Radha Dhoops",
+  url: "https://radhadhoop.com",
   brandFirst: "Radha",
+
   brandSecond: "Dhoops",
   tagline: "Rooted in Tradition. Inspired by Nature.",
   description:
     "Thoughtfully crafted cow-dung products inspired by India's timeless पूजा traditions.",
-  // Placeholders — replace with real business details
-  whatsappNumber: "919999999999", // digits only, country code first
-  phone: "[Phone Number]",
-  email: "[Email Address]",
-  address: "[Business Address]",
+  // Official business details
+  whatsappNumber: "919815097248", // +91 98150 97248
+  phone: "+91 98150 97248",
+  email: "radhasolar@gmail.com",
+  address: "India",
   whatsappMessage: "Namaste! I would like to know more about Radha Dhoops products.",
+
   social: {
     instagram: "#",
     facebook: "#",

@@ -1,5 +1,13 @@
 export const categories = [
   {
+    id: "gau-may",
+    label: "GAU MAY",
+    name: "Pure Cow Dung Powder",
+    slug: "gau-may",
+    short: "100% pure sun-dried Desi cow dung powder for sacred havan and organic plant care.",
+    image: "/products/cow-dung-powder.jpg",
+  },
+  {
     id: "diyas",
     label: "DIYAS",
     name: "Sabrani Diyas",
@@ -27,7 +35,8 @@ export const categories = [
 
 // Filter chips shown on the products page
 export const filters = [
-  { id: "all", label: "All" },
+  { id: "all", label: "All Products" },
+  { id: "gau-may", label: "Cow Dung Powder" },
   { id: "diyas", label: "Diyas" },
   { id: "dhoop", label: "Dhoop" },
   { id: "machines", label: "Machines" }
@@ -35,9 +44,11 @@ export const filters = [
 
 export const categoryName = (id) => {
   const map = {
+    "gau-may": "Pure Cow Dung Essentials",
     diyas: "Sabrani Diyas",
     dhoop: "Sabrani Dhoop",
     machines: "Dairy & Farming Machines",
   };
   return map[id] || "Puja Product";
 };
+

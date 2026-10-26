@@ -70,7 +70,7 @@ export default function ProductsClient() {
       </section>
 
       {/* Filters */}
-      <section className="sticky top-[68px] z-30 border-b border-violet-brand/10 bg-cream/90 py-4 backdrop-blur-md">
+      <section className="sticky top-[78px] z-30 border-b border-violet-brand/10 bg-cream/90 py-4 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 sm:px-8 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-2">
             {filters.map((f) => (
